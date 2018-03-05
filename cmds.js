@@ -159,6 +159,7 @@ exports.playCmd = rl => {
                     log(`Fin del juego`);
                     log(`Número de aciertos:`);
                     biglog(`${score}`);
+                    log("¡Pruebe otra vez!\n");
                     rl.prompt();
                 }
 
