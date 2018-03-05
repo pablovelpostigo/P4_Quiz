@@ -115,11 +115,11 @@ exports.testCmd = (rl, id) => {
 
                 if ( resp === quiz.answer.toLocaleLowerCase()){
                     console.log("Su respuesta es:")
-                    biglog('Correcta', 'green');
+                    log('Correcta', 'green');
                     rl.prompt();
                 }else{
                     console.log("Su respuesta es:")
-                    biglog('Incorrecta', 'red');
+                    log('Incorrecta', 'red');
                     rl.prompt();
                 }
             });
@@ -155,7 +155,8 @@ exports.playCmd = rl => {
                     log(`Llevas ${score} aciertos`);
                     playOne();
                 } else {
-                    log(`Error`);
+                    log("\nRespuesta incorrecta\n");
+                    log(`Fin del juego`);
                     log(`Número de aciertos:`);
                     biglog(`${score}`);
                     rl.prompt();
