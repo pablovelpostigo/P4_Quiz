@@ -213,6 +213,7 @@ exports.playCmd = rl => {
                                     //log("Su respuesta es:");
                                     //log("CORRECTA", "green");
                                     //log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    rl.prompt();
                                     playOne();
                                 } else {
                                     console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${score}`);
