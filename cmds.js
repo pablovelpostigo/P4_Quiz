@@ -161,11 +161,10 @@ exports.testCmd = (rl, id) => {
         .then(id => models.quiz.findById(id))
         .then(quiz => {
             if(!quiz) {
-                throw new Error(`No existe un quiz asociado al id=${id}.`);
+                throw new Error(`No existe un quiz asociado al id = ${id}.`);
             }
             return makeQuestion(rl, quiz.question)
                 .then(a => {
-                    const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                         log("Su respuesta es:")
                         log('CORRECTA', 'green');
@@ -199,7 +198,7 @@ exports.playCmd = rl => {
                 });
                 const jugar = () => {
                     if (toBeResolved.length === 0) {
-                        log(`Fin: ${colorize(score, "yellow")}`, "green");
+                        log(`Fin: ${colorize(score, "blue")}`, "green");
                         rl.prompt();
                     } else {
                         var azar = Math.floor(Math.random() * toBeResolved.length);
@@ -210,8 +209,6 @@ exports.playCmd = rl => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
                                     console.log(`Respuesta correcta. Aciertos: ${colorize(score, "green")}`);
-                                    //log('Correcta', 'green');
-                                    //log(`Preguntas acertadas: ${colorize(score, "green")}`, "green");
                                     jugar();
                                 } else {
                                     console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`);
