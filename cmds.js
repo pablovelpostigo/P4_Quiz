@@ -209,14 +209,16 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    log("Su respuesta es:");
-                                    log("CORRECTA", "green");
-                                    log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    console.log(`Respuesta correcta. Aciertos: ${score}`);
+                                    //log("Su respuesta es:");
+                                    //log("CORRECTA", "green");
+                                    //log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
                                     playOne();
                                 } else {
-                                    log("Su respuesta es:");
-                                    log("INCORRECTA", "red");
-                                    log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${score}`);
+                                    //log("Su respuesta es:");
+                                    //log("INCORRECTA", "red");
+                                    //log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
                                     rl.prompt();
                                 }
                             })
