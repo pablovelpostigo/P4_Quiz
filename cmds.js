@@ -167,12 +167,12 @@ exports.testCmd = (rl, id) => {
                 .then(a => {
                     //const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
-                        log("Su respuesta es:")
-                        log('CORRECTA', 'green');
+                        console.log("Su respuesta es:")
+                        console.log('CORRECTA', 'green');
                         rl.prompt();
                     } else {
-                        log("Su respuesta es:")
-                        log('INCORRECTA', 'red');
+                        console.log("Su respuesta es:")
+                        console.log('INCORRECTA', 'red');
                         rl.prompt();
                     }
                 });
@@ -209,7 +209,7 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    console.log(`Respuesta correcta. Aciertos: ${colorize(score, "green")}`);
+                                    log(`Llevas ${score} aciertos`);
                                     playOne();
                                 } else {
                                     console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`);
