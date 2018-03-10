@@ -78,7 +78,7 @@ const makeQuestion = (rl, text) => {
 };
 
 
-exports.addCmd = rl => {
+exports.addCmd = (rl, id) => {
     makeQuestion(rl, ' Introduzca una pregunta: ')
         .then(q => {
             return makeQuestion(rl, ' Introduzca la respuesta ')
