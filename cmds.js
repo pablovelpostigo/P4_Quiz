@@ -58,7 +58,7 @@ exports.showCmd = (rl, id) => {
             if (!quiz) {
                 throw new Error(`No existe un quiz asociado al id=${id}.`);
             }
-            log(` [${colorize(quiz.id, 'magenta')}]:  ${quiz.question} ${colorize('=>', 'magenta')} ${quiz.answer}`);
+            log(`[${colorize(quiz.id, 'magenta')}]:  ${quiz.question} ${colorize('=>', 'magenta')} ${quiz.answer}`);
         })
         .catch(error => {
             errorlog(error.message);
@@ -79,11 +79,11 @@ const makeQuestion = (rl, text) => {
 
 
 exports.addCmd = rl => {
-    makeQuestion(rl, ' Introduzca una pregunta: ')
+    makeQuestion(rl, 'Introduzca una pregunta: ')
         .then(q => {
-            return makeQuestion(rl, ' Introduzca la respuesta ')
+            return makeQuestion(rl, 'Introduzca la respuesta ')
                 .then(a => {
-                    return {question: q, answer: a};
+                    return {question:q, answer:a};
                 });
             })
         .then(quiz => {
@@ -126,14 +126,15 @@ exports.editCmd = (rl, id) => {
                 throw new Error(`No existe un quiz asociado al id=${id}.`);
             }
 
-            process.stdout.isTTY && setTimeout(() => {rl.write(quiz.question)}, 0);
+            process.stdout.isTTY && setTimeout(() => {rl.write(quiz.question)},0);
             return makeQuestion(rl, ' Introduzca la pregunta: ')
                 .then(q => {
                     process.stdout.isTTY && setTimeout(() => {rl.write(quiz.answer)}, 0);
-                    return makeQuestion(rl, ' Introduzca la respuesta ')
+                    return makeQuestion(rl, 'Introduzca la respuesta: ')
                         .then(a => {
                             quiz.question = q;
-                            quiz.answer =a;
+                            quiz.answer = a;
+                            return quiz;
                         });
                 });
         })
@@ -161,7 +162,7 @@ exports.testCmd = (rl, id) => {
         .then(id => models.quiz.findById(id))
         .then(quiz => {
             if(!quiz) {
-                throw new Error(`No existe un quiz asociado al id = ${id}.`);
+                throw new Error(`No existe un quiz asociado al id = ${id}`);
             }
             return makeQuestion(rl, quiz.question)
                 .then(a => {
@@ -176,7 +177,7 @@ exports.testCmd = (rl, id) => {
                 });
         })
         .catch(Sequelize.ValidationError, error => {
-            errorlog('El quiz es erroneo:');
+            errorlog("El quiz es erroneo: ");
             error.errors.forEach(({message}) => errorlog(message));
         })
         .catch(error => {
@@ -197,7 +198,9 @@ exports.playCmd = rl => {
                 });
                 const playOne = () => {
                     if (toBeResolved.length === 0) {
-                        log(`Fin: ${colorize(score, "yellow")}`, "green");
+                        log("No hay más preguntas.");
+                        log(`Fin del quiz. Aciertos: ${score}`);
+                        biglog(`${score}`,'green');
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
