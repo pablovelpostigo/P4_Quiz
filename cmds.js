@@ -212,9 +212,7 @@ exports.playCmd = rl => {
                                     log(`Preguntas acertadas: ${colorize(score, "green")}`, "green");
                                     jugar();
                                 } else {
-                                    log("Su respuesta es:");
-                                    log('Incorrecta', 'red');
-                                    log(`Fin. Numero de aciertos: ${colorize(score, "green")}`, "green");
+                                    log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`, "green");
                                     rl.prompt();
                                 }
                             })
