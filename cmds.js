@@ -197,7 +197,7 @@ exports.playCmd = rl => {
                 });
                 const jugar = () => {
                     if (toBeResolved.length === 0) {
-                        log(`Fin. Has ganado. Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                        log(`Fin: ${colorize(score, "yellow")}`, "green");
                         rl.prompt();
                     } else {
                         var azar = Math.floor(Math.random() * toBeResolved.length);
