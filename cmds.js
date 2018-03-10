@@ -197,20 +197,20 @@ exports.playCmd = rl => {
                 quizzes.forEach((quiz, id) => {
                     toBeResolved[id] = quiz;
                 });
-                const jugar = () => {
+                const playOne = () => {
                     if (toBeResolved.length === 0) {
                         log(`Fin: ${colorize(score, "yellow")}`, "green");
                         rl.prompt();
                     } else {
-                        var azar = Math.floor(Math.random() * toBeResolved.length);
-                        let quiz = toBeResolved[azar];
-                        toBeResolved.splice(azar, 1);
+                        var aleat = Math.floor(Math.random() * toBeResolved.length);
+                        let quiz = toBeResolved[aleat];
+                        toBeResolved.splice(aleat, 1);
                         return makeQuestion(rl, quiz.question)
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
                                     console.log(`Respuesta correcta. Aciertos: ${colorize(score, "green")}`);
-                                    jugar();
+                                    playOne();
                                 } else {
                                     console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`);
                                     rl.prompt();
@@ -228,7 +228,7 @@ exports.playCmd = rl => {
                             });
                     }
                 }
-                jugar();
+                playOne();
             });
 }
 
