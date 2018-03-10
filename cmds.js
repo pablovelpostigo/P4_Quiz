@@ -165,6 +165,7 @@ exports.testCmd = (rl, id) => {
             }
             return makeQuestion(rl, quiz.question)
                 .then(a => {
+                    //const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                         log("Su respuesta es:")
                         log('CORRECTA', 'green');
@@ -198,7 +199,7 @@ exports.playCmd = rl => {
                 });
                 const jugar = () => {
                     if (toBeResolved.length === 0) {
-                        log(`Fin: ${colorize(score, "blue")}`, "green");
+                        log(`Fin: ${colorize(score, "yellow")}`, "green");
                         rl.prompt();
                     } else {
                         var azar = Math.floor(Math.random() * toBeResolved.length);
