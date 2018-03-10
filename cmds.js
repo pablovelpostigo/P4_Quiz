@@ -168,11 +168,11 @@ exports.testCmd = (rl, id) => {
                     //const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                         console.log("Su respuesta es:")
-                        console.log('CORRECTA', 'green');
+                        console.log('CORRECTA');
                         rl.prompt();
                     } else {
                         console.log("Su respuesta es:")
-                        console.log('INCORRECTA', 'red');
+                        console.log('INCORRECTA');
                         rl.prompt();
                     }
                 });
