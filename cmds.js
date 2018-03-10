@@ -209,7 +209,7 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    log(`Llevas ${score} aciertos`);
+                                    console.log(`Respuesta correcta.Llevas ${score} aciertos`);
                                     playOne();
                                 } else {
                                     console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`);
