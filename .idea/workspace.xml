@@ -29,11 +29,11 @@
       <file leaf-file-name="cmds.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmds.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="215" column="48" lean-forward="false" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
+            <state relative-caret-position="391">
+              <caret line="215" column="108" lean-forward="false" selection-start-line="215" selection-start-column="108" selection-end-line="215" selection-end-column="108" />
               <folding>
-                <marker date="1520723417485" expanded="true" signature="1218:2021" ph="..." />
-                <marker date="1520723417485" expanded="true" signature="1414:2021" ph="..." />
+                <marker date="1520723840306" expanded="true" signature="1218:2021" ph="..." />
+                <marker date="1520723840306" expanded="true" signature="1414:2021" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,7 +99,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -167,15 +167,15 @@
       <updated>1520098417266</updated>
       <workItem from="1520098424515" duration="876000" />
       <workItem from="1520099362755" duration="20512000" />
-      <workItem from="1520677791602" duration="18702000" />
+      <workItem from="1520677791602" duration="19125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40090000" />
+    <option name="totallyTimeSpent" value="40513000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0065885796" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -258,8 +258,8 @@
         <state relative-caret-position="2737">
           <caret line="161" column="47" lean-forward="false" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
           <folding>
-            <marker date="1520723417485" expanded="true" signature="1218:2021" ph="..." />
-            <marker date="1520723417485" expanded="true" signature="1414:2021" ph="..." />
+            <marker date="1520723840306" expanded="true" signature="1218:2021" ph="..." />
+            <marker date="1520723840306" expanded="true" signature="1414:2021" ph="..." />
           </folding>
         </state>
       </provider>
@@ -366,11 +366,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmds.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="215" column="48" lean-forward="false" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
+        <state relative-caret-position="391">
+          <caret line="215" column="108" lean-forward="false" selection-start-line="215" selection-start-column="108" selection-end-line="215" selection-end-column="108" />
           <folding>
-            <marker date="1520723417485" expanded="true" signature="1218:2021" ph="..." />
-            <marker date="1520723417485" expanded="true" signature="1414:2021" ph="..." />
+            <marker date="1520723840306" expanded="true" signature="1218:2021" ph="..." />
+            <marker date="1520723840306" expanded="true" signature="1414:2021" ph="..." />
           </folding>
         </state>
       </provider>
