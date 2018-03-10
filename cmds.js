@@ -78,7 +78,7 @@ const makeQuestion = (rl, text) => {
 };
 
 
-exports.addCmd = (rl, id) => {
+exports.addCmd = rl => {
     makeQuestion(rl, ' Introduzca una pregunta: ')
         .then(q => {
             return makeQuestion(rl, ' Introduzca la respuesta ')
@@ -168,10 +168,12 @@ exports.testCmd = (rl, id) => {
                     const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                         log("Su respuesta es:")
-                        log('Correcta', 'green');
+                        log('CORRECTA', 'green');
+                        rl.prompt();
                     } else {
                         log("Su respuesta es:")
-                        log('Incorrecta', 'red');
+                        log('INCORRECTA', 'red');
+                        rl.prompt();
                     }
                 });
         })
@@ -212,7 +214,7 @@ exports.playCmd = rl => {
                                     log(`Preguntas acertadas: ${colorize(score, "green")}`, "green");
                                     jugar();
                                 } else {
-                                    log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`, "green");
+                                    console.log(`Respuesta incorrecta. Fin del examen. Aciertos: ${colorize(score, "green")}`, "green");
                                     rl.prompt();
                                 }
                             })
