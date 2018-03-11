@@ -29,10 +29,10 @@
       <file leaf-file-name="cmds.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmds.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="205" column="39" lean-forward="true" selection-start-line="205" selection-start-column="39" selection-end-line="205" selection-end-column="39" />
+            <state relative-caret-position="476">
+              <caret line="225" column="59" lean-forward="false" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
               <folding>
-                <marker date="1520764199090" expanded="true" signature="1806:2306" ph="..." />
+                <marker date="1520764865018" expanded="true" signature="1806:2306" ph="..." />
               </folding>
             </state>
           </provider>
@@ -166,12 +166,12 @@
       <updated>1520098417266</updated>
       <workItem from="1520098424515" duration="876000" />
       <workItem from="1520099362755" duration="20512000" />
-      <workItem from="1520677791602" duration="22473000" />
+      <workItem from="1520677791602" duration="22955000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43861000" />
+    <option name="totallyTimeSpent" value="44343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -257,7 +257,7 @@
         <state relative-caret-position="2737">
           <caret line="161" column="47" lean-forward="false" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
           <folding>
-            <marker date="1520764199090" expanded="true" signature="1806:2306" ph="..." />
+            <marker date="1520764865018" expanded="true" signature="1806:2306" ph="..." />
           </folding>
         </state>
       </provider>
@@ -364,10 +364,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cmds.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="205" column="39" lean-forward="true" selection-start-line="205" selection-start-column="39" selection-end-line="205" selection-end-column="39" />
+        <state relative-caret-position="476">
+          <caret line="225" column="59" lean-forward="false" selection-start-line="225" selection-start-column="59" selection-end-line="225" selection-end-column="59" />
           <folding>
-            <marker date="1520764199090" expanded="true" signature="1806:2306" ph="..." />
+            <marker date="1520764865018" expanded="true" signature="1806:2306" ph="..." />
           </folding>
         </state>
       </provider>
