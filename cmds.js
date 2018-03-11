@@ -51,10 +51,9 @@ exports.helpCmd = rl => {
 };
 
 exports.listCmd = rl => {
-
-        models.quiz.findAll()
+    models.quiz.findAll()
         .each(quiz => {
-            log(`[${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
+            log(`[${colorize(quiz.id, "magenta")}]: ${quiz.question}`);
         })
         .catch(error => {
             errorlog(error.message);
