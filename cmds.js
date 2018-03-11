@@ -220,7 +220,7 @@ exports.playCmd = rl => {
                                     //console.log(`CORRECTO - Lleva ${score} aciertos`);
                                     //log("Su respuesta es:");
                                     //log("CORRECTA", "green");
-                                    //log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    console.log(`Preguntas acertadas: ${colorize(score, "yellow")}`);
                                     playOne();
                                 } else {
                                     //console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
