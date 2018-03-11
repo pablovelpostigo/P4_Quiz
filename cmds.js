@@ -206,7 +206,7 @@ exports.playCmd = rl => {
                     if (toBeResolved.length === 0) {
                         //log("No hay más preguntas.");
                         console.log('Fin');
-                        console.log(`Aciertos: ${score}`);
+                        //console.log(`Aciertos: ${score}`);
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
@@ -227,7 +227,7 @@ exports.playCmd = rl => {
                                     console.log('INCORRECTO');
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
-                                    log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    console.log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
                                     rl.prompt();
                                 }
                             })
