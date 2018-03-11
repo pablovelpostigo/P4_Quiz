@@ -175,9 +175,9 @@ exports.testCmd = (rl, id) => {
             return makeQuestion(rl, quiz.question)
                 .then(a => {
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
-                        console.log('CORRECTO');
+                        console.log('Correcto');
                     } else {
-                        console.log('INCORRECTO');
+                        console.log('Incorrecto');
                     }
                 });
         })
@@ -216,7 +216,7 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    console.log('CORRECTO');
+                                    console.log('Correcto');
                                     //console.log(`CORRECTO - Lleva ${score} aciertos`);
                                     //log("Su respuesta es:");
                                     //log("CORRECTA", "green");
@@ -224,7 +224,7 @@ exports.playCmd = rl => {
                                     playOne();
                                 } else {
                                     //console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
-                                    console.log('INCORRECTO');
+                                    console.log('Incorrecto');
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
                                     console.log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
