@@ -6,34 +6,6 @@ const {log, biglog, errorlog, colorize} = require("./out");
 const {models} = require('./model');
 
 
-exports.helpCmd = rl => {
-    log("Commandos:");
-    log(" h|help - Muestra esta ayuda.");
-    log(" list - Listar los quizzes existentes.");
-    log(" show <id> - Muesta la pregunta y la respuesta el quiz indicado");
-    log(" add - Añadir un nuevo quiz interactivamente.");
-    log(" delete <id> - Borra el quiz indicado.");
-    log(" edit <id> - Editar el quiz indicado.");
-    log(" text <id> - Probar el quiz indicado.");
-    log(" p|play - Jugar a preguntar aleatoriamente todos los quizzes.");
-    log(" credits - Créditos.");
-    log(" q|quiz  - Salir del programa.");
-    rl.prompt();
-};
-
-exports.listCmd = rl => {
-        models.quiz.findAll()
-        .each(quiz => {
-            log(` [${colorize(quiz.id, 'magenta')}]:  ${quiz.question}`);
-        })
-        .catch(error => {
-            errorlog(error.message);
-        })
-        .then(() => {
-            rl.prompt();
-        });
-}
-
 const validateId = id => {
 
     return new Sequelize.Promise((resolve, reject) => {
@@ -49,6 +21,48 @@ const validateId = id => {
         }
     });
 };
+
+
+const makeQuestion = (rl, text) => {
+
+    return new Sequelize.Promise((resolve, reject) => {
+        rl.question(colorize(text, 'red'), answer => {
+            resolve(answer.trim()); //trim para quitar espacios en blanco vacios por delante y por detrás
+        });
+    });
+};
+
+
+exports.helpCmd = rl => {
+    log("Commandos:");
+    log(" h|help - Muestra esta ayuda.");
+    log(" list - Listar los quizzes existentes.");
+    log(" show <id> - Muesta la pregunta y la respuesta el quiz indicado");
+    log(" add - Añadir un nuevo quiz interactivamente.");
+    log(" delete <id> - Borra el quiz indicado.");
+    log(" edit <id> - Editar el quiz indicado.");
+    log(" test <id> - Probar el quiz indicado.");
+    log(" p|play - Jugar a preguntar aleatoriamente todos los quizzes.");
+    log(" credits - Créditos.");
+    log(" q|quiz  - Salir del programa.");
+    rl.prompt();
+};
+
+exports.listCmd = rl => {
+
+        models.quiz.findAll()
+        .each(quiz => {
+            log(`[${colorize(quiz.id, 'magenta')}]:  ${quiz.question}`);
+        })
+        .catch(error => {
+            errorlog(error.message);
+        })
+        .then(() => {
+            rl.prompt();
+        });
+}
+
+
 
 
 exports.showCmd = (rl, id) => {
@@ -68,14 +82,7 @@ exports.showCmd = (rl, id) => {
         });
 };
 
-const makeQuestion = (rl, text) => {
 
-    return new Sequelize.Promise((resolve, reject) => {
-        rl.question(colorize(text, 'red'), answer => {
-            resolve(answer.trim()); //trim para quitar espacios en blanco vacios por delante y por detrás
-        });
-    });
-};
 
 
 exports.addCmd = rl => {
@@ -186,6 +193,7 @@ exports.testCmd = (rl, id) => {
         });
 };
 
+
 exports.playCmd = rl => {
         let score = 0;
         let toBeResolved = new Array();
@@ -232,10 +240,10 @@ exports.playCmd = rl => {
                                 rl.prompt();
                             });
                     }
-                }
+                };
                 playOne();
             });
-}
+};
 
 
 exports.creditsCmd = rl => {
@@ -247,5 +255,4 @@ exports.creditsCmd = rl => {
 
 exports.quitCmd = rl => {
     rl.close();
-    rl.prompt();
 };
