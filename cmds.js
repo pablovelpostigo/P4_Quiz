@@ -1,7 +1,7 @@
 
-const {models} = require("./model");
+const {models} = require('./model');
 
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
 const {log, biglog, errorlog, colorize} = require("./out");
 
