@@ -175,9 +175,9 @@ exports.testCmd = (rl, id) => {
             return makeQuestion(rl, quiz.question)
                 .then(a => {
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
-                        console.log(`CORRECTO`)
+                        console.log('CORRECTO');
                     } else {
-                        console.log(`INCORRECTO`);
+                        console.log('INCORRECTO');
                     }
                 });
         })
@@ -205,8 +205,8 @@ exports.playCmd = rl => {
                 const playOne = () => {
                     if (toBeResolved.length === 0) {
                         //log("No hay más preguntas.");
-                        console.log(`Fin`);
-                        console.log(`Aciertos: ${score}`)
+                        console.log('Fin');
+                        console.log(`Aciertos: ${score}`);
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
@@ -216,7 +216,7 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    console.log(`CORRECTO`);
+                                    console.log('CORRECTO');
                                     //console.log(`CORRECTO - Lleva ${score} aciertos`);
                                     //log("Su respuesta es:");
                                     //log("CORRECTA", "green");
@@ -224,10 +224,10 @@ exports.playCmd = rl => {
                                     playOne();
                                 } else {
                                     //console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
-                                    console.log(`INCORRECTO`);
+                                    console.log('INCORRECTO');
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
-                                    //log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
+                                    log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
                                     rl.prompt();
                                 }
                             })
