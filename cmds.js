@@ -1,9 +1,11 @@
 
-const Sequelize = require('sequelize');
+const {models} = require("./model");
+
+const Sequelize = require("sequelize");
 
 const {log, biglog, errorlog, colorize} = require("./out");
 
-const {models} = require('./model');
+
 
 
 const validateId = id => {
@@ -52,7 +54,7 @@ exports.listCmd = rl => {
 
         models.quiz.findAll()
         .each(quiz => {
-            log(`[${colorize(quiz.id, 'magenta')}]:  ${quiz.question}`);
+            log(`[${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
         })
         .catch(error => {
             errorlog(error.message);
@@ -60,8 +62,7 @@ exports.listCmd = rl => {
         .then(() => {
             rl.prompt();
         });
-}
-
+};
 
 
 
@@ -70,7 +71,7 @@ exports.showCmd = (rl, id) => {
         .then(id => models.quiz.findById(id))
         .then(quiz => {
             if (!quiz) {
-                throw new Error(`No existe un quiz asociado al id=${id}.`);
+                throw new Error(`No existe un quiz asociado al id = ${id}.`);
             }
             log(`[${colorize(quiz.id, 'magenta')}]:  ${quiz.question} ${colorize('=>', 'magenta')} ${quiz.answer}`);
         })
@@ -90,7 +91,7 @@ exports.addCmd = rl => {
         .then(q => {
             return makeQuestion(rl, 'Introduzca la respuesta ')
                 .then(a => {
-                    return {question:q, answer:a};
+                    return { question: q, answer: a};
                 });
             })
         .then(quiz => {
@@ -116,7 +117,7 @@ exports.addCmd = rl => {
 exports.deleteCmd = (rl, id) => {
 
     validateId(id)
-        .then(id => models.quiz.destroy({where: {id}}))
+        .then(id => models.quiz.destroy({ where: { id } }))
         .catch(error => {
             errorlog(error.message);
         })
@@ -174,7 +175,6 @@ exports.testCmd = (rl, id) => {
             }
             return makeQuestion(rl, quiz.question)
                 .then(a => {
-                    //const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                         log("CORRECTO", "green");
                     } else {
@@ -222,7 +222,7 @@ exports.playCmd = rl => {
                                     //log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
                                     playOne();
                                 } else {
-                                    log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
+                                    log(`INCORRECTO. Fin. Aciertos: ${score}`);
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
                                     //log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
