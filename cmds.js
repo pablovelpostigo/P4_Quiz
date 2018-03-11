@@ -165,6 +165,7 @@ exports.editCmd = (rl, id) => {
 
 
 exports.testCmd = (rl, id) => {
+
     validateId(id)
         .then(id => models.quiz.findById(id))
         .then(quiz => {
@@ -175,9 +176,9 @@ exports.testCmd = (rl, id) => {
                 .then(a => {
                     //const resp = (answer || "").toLocaleLowerCase().trim()
                     if(a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
-                        console.log("CORRECTO.", "green");
+                        log("CORRECTO", "green");
                     } else {
-                        log("INCORRECTO.", "red");
+                        log("INCORRECTO", "red");
                     }
                 });
         })
@@ -204,9 +205,8 @@ exports.playCmd = rl => {
                 });
                 const playOne = () => {
                     if (toBeResolved.length === 0) {
-                        log("No hay más preguntas.");
-                        log(`Fin del quiz. Aciertos: ${score}`);
-                        biglog(`${score}`,'green');
+                        //log("No hay más preguntas.");
+                        log(`Fin. Aciertos: ${score}`);
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
@@ -216,13 +216,13 @@ exports.playCmd = rl => {
                             .then(a => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
-                                    console.log(`CORRECTO - Lleva ${score} aciertos`);
+                                    log(`CORRECTO - Lleva ${score} aciertos`);
                                     //log("Su respuesta es:");
                                     //log("CORRECTA", "green");
                                     //log(`Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
                                     playOne();
                                 } else {
-                                    console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
+                                    log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
                                     //log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`, "green");
