@@ -207,7 +207,8 @@ exports.playCmd = rl => {
                 const playOne = () => {
                     if (toBeResolved.length === 0) {
                         //log("No hay más preguntas.");
-                        console.log(`Fin. Aciertos: ${score}`);
+                        console.log(`Fin`);
+                        console.log(`Aciertos: ${score}`)
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
