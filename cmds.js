@@ -225,10 +225,10 @@ exports.playCmd = rl => {
                                     playOne();
                                 } else {
                                     //console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
-                                    log('Incorrecto');
+                                    console.log('Incorrecto');
                                     //log("Su respuesta es:");
                                     //log("INCORRECTA", "red");
-                                    log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
+                                    console.log(`Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
                                     rl.prompt();
                                 }
                             })
