@@ -28,7 +28,7 @@ const validateId = id => {
 const makeQuestion = (rl, text) => {
 
     return new Sequelize.Promise((resolve, reject) => {
-        rl.question(colorize(text, 'red'), answer => {
+        rl.question(colorize(text +'? ','red'),answer => {
             resolve(answer.trim()); //trim para quitar espacios en blanco vacios por delante y por detrás
         });
     });
@@ -51,9 +51,10 @@ exports.helpCmd = rl => {
 };
 
 exports.listCmd = rl => {
+
     models.quiz.findAll()
         .each(quiz => {
-            log(`[${colorize(quiz.id, "magenta")}]: ${quiz.question}`);
+            log(`[${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
         })
         .catch(error => {
             errorlog(error.message);

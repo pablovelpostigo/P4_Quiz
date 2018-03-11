@@ -24,71 +24,56 @@ const rl = readline.createInterface({
 
 rl.prompt();
 
-rl
-    .on('line', (line) => {
+rl.on('line', (line) => {
 
-    let args = line.split (" ");
+    let args = line.split(" ");
     let cmd = args[0].toLowerCase().trim();
 
+    switch (cmd) {
+        case "":
+            break;
+        case "h":
+        case "help":
+            cmds.helpCmd(rl);
+            break;
+        case "list":
+            cmds.listCmd(rl);
+            break;
+        case "show":
+            cmds.showCmd(rl, args[1]);
+            break;
+        case "add":
+            cmds.addCmd(rl, args[1]);
+            break;
+        case "delete":
+            cmds.deleteCmd(rl, args[1]);
+            break;
+        case "edit":
+            cmds.editCmd(rl, args[1]);
+            break;
+        case "test":
+            cmds.testCmd(rl, args[1]);
+            break;
+        case "p":
+        case "play":
+            cmds.playCmd(rl);
+            break;
+        case "credits":
+            cmds.creditsCmd(rl);
+            break;
+        case "q":
+        case "quit":
+            cmds.quitCmd(rl);
+            break;
+        default:
+            log(`Comando desconocido: "${colorize(cmd, "red")}"`);
+            log(`Use ${colorize("help", "green")} para ver todos los comandos disponibles.`)
+            break;
+    }
 
-switch (cmd) {
-    case '':
-        rl.prompt();
-        break;
-
-    case'help':
-    case 'h':
-        cmds.helpCmd(rl);
-        break;
-
-    case 'quit':
-    case 'q':
-        cmds.quitCmd(rl);
-        break;
-
-    case 'add':
-        cmds.addCmd(rl);
-        break;
-
-    case 'list':
-        cmds.listCmd(rl);
-        break;
-
-    case 'show':
-        cmds.showCmd(rl, args[1]);
-        break;
-
-    case 'test':
-        cmds.testCmd(rl, args[1]);
-        break;
-
-    case 'play':
-    case 'p':
-        cmds.playCmd(rl);
-        break;
-
-    case 'delete':
-        cmds.deleteCmd(rl, args[1]);
-        break;
-
-    case 'edit':
-        cmds.editCmd(rl, args[1]);
-        break;
-
-    case 'credits':
-        cmds.creditsCmd(rl);
-        break;
-
-    default:
-        log(`Comando desconocido: '${colorize(cmd, 'red')}'`);
-        log (`Use ${colorize('help', 'green')} para ver todos los comandos disponibles.'`);
-        rl.prompt();
-        break;
-}
-rl.prompt();
 })
 .on('close', () => {
     log('Adiós!');
-process.exit(0);
+    process.exit(0);
 });
 
