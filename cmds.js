@@ -1,38 +1,9 @@
 
-const {models} = require('./model');
+const { models } = require("./model");
 
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-const {log, biglog, errorlog, colorize} = require("./out");
-
-
-
-
-const validateId = id => {
-
-    return new Sequelize.Promise((resolve, reject) => {
-        if (typeof id === "undefined") {
-            reject(new Error(`Falta el parametro <id>.`));
-        } else {
-            id = parseInt(id); //coger la parte entera y descartar lo demás
-            if (Number.isNaN(id)) {
-                reject(new Error(`El valor del parámetro <id> no es un número.`));
-            } else {
-                resolve(id);
-            }
-        }
-    });
-};
-
-
-const makeQuestion = (rl, text) => {
-
-    return new Sequelize.Promise((resolve, reject) => {
-        rl.question(colorize(text +'? ','red'),answer => {
-            resolve(answer.trim()); //trim para quitar espacios en blanco vacios por delante y por detrás
-        });
-    });
-};
+const { colorize, log, biglog, errorlog } = require("./out");
 
 
 exports.helpCmd = (socket, rl) => {
@@ -65,6 +36,21 @@ exports.listCmd = (socket, rl) => {
 };
 
 
+const validateId = (id) => {
+
+    return new Sequelize.Promise((resolve, reject) => {
+        if (typeof id === "undefined") {
+            reject(new Error(`Falta el parametro <id>.`));
+        } else {
+            id = parseInt(id); //coger la parte entera y descartar lo demás
+            if (Number.isNaN(id)) {
+                reject(new Error(`El valor del parámetro <id> no es un número.`));
+            } else {
+                resolve(id);
+            }
+        }
+    });
+};
 
 exports.showCmd = (socket, rl, id) => {
     validateId(id)
@@ -84,6 +70,14 @@ exports.showCmd = (socket, rl, id) => {
 };
 
 
+const makeQuestion = (rl, text) => {
+
+    return new Sequelize.Promise((resolve, reject) => {
+        rl.question(colorize(text,'red'), answer => {
+            resolve(answer.trim()); //trim para quitar espacios en blanco vacios por delante y por detrás
+        });
+    });
+};
 
 
 exports.addCmd = (socket, rl) => {
@@ -133,7 +127,6 @@ exports.editCmd = (socket, rl, id) => {
             if(!quiz) {
                 throw new Error(`No existe un quiz asociado al id=${id}.`);
             }
-
             process.stdout.isTTY && setTimeout(() => {rl.write(quiz.question)},0);
             return makeQuestion(rl, ' Introduzca la pregunta: ')
                 .then(q => {
@@ -197,7 +190,7 @@ exports.testCmd = (socket, rl, id) => {
 
 exports.playCmd = (socket, rl) => {
         let score = 0;
-        let toBeResolved = new Array();
+        let toBeResolved = [];
         models.quiz.findAll()
             .then(quizzes => {
                 quizzes.forEach((quiz, id) => {
@@ -205,9 +198,7 @@ exports.playCmd = (socket, rl) => {
                 });
                 const playOne = () => {
                     if (toBeResolved.length === 0) {
-                        //log("No hay más preguntas.");
                         log(socket, 'Fin');
-                        //console.log(`Aciertos: ${score}`);
                         rl.prompt();
                     } else {
                         var aleat = Math.floor(Math.random() * toBeResolved.length);
@@ -218,17 +209,11 @@ exports.playCmd = (socket, rl) => {
                                 if (a.toLowerCase().trim() == quiz.answer.toLowerCase().trim()) {
                                     score++;
                                     log(socket, 'Correcto');
-                                    //console.log(`CORRECTO - Lleva ${score} aciertos`);
-                                    //log("Su respuesta es:");
-                                    //log("CORRECTA", "green");
                                     log(socket, `Preguntas acertadas: ${colorize(score, "yellow")}`);
                                     playOne();
                                 } else {
-                                    //console.log(`INCORRECTO. Fin del examen. Aciertos: ${score}`);
-                                    console.log(socket, 'Incorrecto');
-                                    //log("Su respuesta es:");
-                                    //log("INCORRECTA", "red");
-                                    console.log(socket, `Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
+                                    log(socket, 'Incorrecto');
+                                    log(socket, `Fin.Preguntas acertadas: ${colorize(score, "yellow")}`);
                                     rl.prompt();
                                 }
                             })
@@ -251,8 +236,8 @@ exports.playCmd = (socket, rl) => {
 
 exports.creditsCmd = (socket, rl) => {
     log(socket, 'Autores de la práctica :');
-    log (socket, 'Alberto Sánchez Delgado', 'green');
-    log (socket, 'Pablo Velasco Postigo', 'green');
+    log(socket, 'Alberto Sánchez Delgado', 'green');
+    log(socket, 'Pablo Velasco Postigo', 'green');
     rl.prompt();
 };
 
